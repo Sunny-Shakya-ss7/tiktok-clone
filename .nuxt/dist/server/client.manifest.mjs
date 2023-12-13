@@ -1,0 +1,1 @@
+export { default } from "file:///C:/Users/BS/Desktop/New%20folder/tiktok-clone/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
