@@ -3,6 +3,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     'MenuItem': typeof import("../components/MenuItem.vue")['default']
     'MenuItemFollow': typeof import("../components/MenuItemFollow.vue")['default']
+    'PostMain': typeof import("../components/PostMain.vue")['default']
     'SideNavMain': typeof import("../components/SideNavMain.vue")['default']
     'TopNav': typeof import("../components/TopNav.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -29,6 +30,7 @@ declare module 'vue' {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyMenuItem': typeof import("../components/MenuItem.vue")['default']
     'LazyMenuItemFollow': typeof import("../components/MenuItemFollow.vue")['default']
+    'LazyPostMain': typeof import("../components/PostMain.vue")['default']
     'LazySideNavMain': typeof import("../components/SideNavMain.vue")['default']
     'LazyTopNav': typeof import("../components/TopNav.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -58,6 +60,7 @@ declare module 'vue' {
 
 export const MenuItem: typeof import("../components/MenuItem.vue")['default']
 export const MenuItemFollow: typeof import("../components/MenuItemFollow.vue")['default']
+export const PostMain: typeof import("../components/PostMain.vue")['default']
 export const SideNavMain: typeof import("../components/SideNavMain.vue")['default']
 export const TopNav: typeof import("../components/TopNav.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -84,6 +87,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyMenuItem: typeof import("../components/MenuItem.vue")['default']
 export const LazyMenuItemFollow: typeof import("../components/MenuItemFollow.vue")['default']
+export const LazyPostMain: typeof import("../components/PostMain.vue")['default']
 export const LazySideNavMain: typeof import("../components/SideNavMain.vue")['default']
 export const LazyTopNav: typeof import("../components/TopNav.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
