@@ -4,7 +4,7 @@
             <img class="rounded-full max-h-[60px]" width="60" src="https://picsum.photos/id/8/300/320">
         </div>
         <div class="pl-3 w-full px-4">
-            <div class="flex items-center justify-center pb-0.5">
+            <div class="flex items-center justify-between pb-0.5">
                 <button>
                     <span class="font-bold hover:underline cursor-pointer">User name</span>
                     <span class="text-[13px] text-light text-gray-500 pl-1 cursor-pointer">User name</span>
@@ -22,13 +22,14 @@
 
             <div class="text-[14px] pb-0.5 flex items-center font-semibold">
                 <Icon name="mdi:music" size="17" />
-                <div class="px-1">original sound- AWESOME</div>
+                <div class="px-1">original sound - AWESOME</div>
                 <Icon name="mdi:heart" size="20" />
             </div>
 
             <div class="mt-2.5 flex">
                 <div class="relative min-h-[480px] max-w-[260px] flex items-center bg-black rounded-xl cursor-pointer">
-                    <video ref="video" loop muted class="rounded-xl object-cover mx-auto h-full" src="./video1.mp4"></video>
+                    <video ref="video" loop muted class="rounded-xl object-cover mx-auto h-full"
+                        src="../public/video1.mp4"></video>
                     <img class="absolute right-2 bottom-14" width="90" src="~/assets/images/tiktok-logo-white.png">
                 </div>
 
@@ -44,13 +45,13 @@
                             <button class="rounded-full bg-gray-200 p-2 cursor-pointer">
                                 <Icon name="bx:bxs-message-rounded-dots" size="25" />
                             </button>
-                            <span class="text-xs text-gray-800 font-semibold">34</span>
+                            <span class="text-xs text-gray-800 font-semibold">67</span>
                         </div>
                         <div class="pb-4 text-center">
                             <button class="rounded-full bg-gray-200 p-2 cursor-pointer">
                                 <Icon name="ri:share-forward-fill" size="25" />
                             </button>
-                            <span class="text-xs text-gray-800 font-semibold">34</span>
+                            <span class="text-xs text-gray-800 font-semibold">43</span>
                         </div>
                     </div>
                 </div>
