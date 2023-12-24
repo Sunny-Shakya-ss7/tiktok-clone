@@ -2,6 +2,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'AuthOverlay': typeof import("../components/AuthOverlay.vue")['default']
+    'EditProfileOverlay': typeof import("../components/EditProfileOverlay.vue")['default']
     'Login': typeof import("../components/Login.vue")['default']
     'MenuItem': typeof import("../components/MenuItem.vue")['default']
     'MenuItemFollow': typeof import("../components/MenuItemFollow.vue")['default']
@@ -35,6 +36,7 @@ declare module 'vue' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyAuthOverlay': typeof import("../components/AuthOverlay.vue")['default']
+    'LazyEditProfileOverlay': typeof import("../components/EditProfileOverlay.vue")['default']
     'LazyLogin': typeof import("../components/Login.vue")['default']
     'LazyMenuItem': typeof import("../components/MenuItem.vue")['default']
     'LazyMenuItemFollow': typeof import("../components/MenuItemFollow.vue")['default']
@@ -71,6 +73,7 @@ declare module 'vue' {
 }
 
 export const AuthOverlay: typeof import("../components/AuthOverlay.vue")['default']
+export const EditProfileOverlay: typeof import("../components/EditProfileOverlay.vue")['default']
 export const Login: typeof import("../components/Login.vue")['default']
 export const MenuItem: typeof import("../components/MenuItem.vue")['default']
 export const MenuItemFollow: typeof import("../components/MenuItemFollow.vue")['default']
@@ -104,6 +107,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyAuthOverlay: typeof import("../components/AuthOverlay.vue")['default']
+export const LazyEditProfileOverlay: typeof import("../components/EditProfileOverlay.vue")['default']
 export const LazyLogin: typeof import("../components/Login.vue")['default']
 export const LazyMenuItem: typeof import("../components/MenuItem.vue")['default']
 export const LazyMenuItemFollow: typeof import("../components/MenuItemFollow.vue")['default']
