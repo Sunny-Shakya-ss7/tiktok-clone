@@ -8,4 +8,5 @@ export const useUserStore = defineStore("user", {
     image: "",
   }),
   actions: {},
+  persist: true,
 });

@@ -3,7 +3,7 @@
         class="fixed flex items-center justify-center z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50">
         <div class="relative bg-white w-full max-w-[470px] h-[70%] p-4 rounded-lg">
             <div class="w-full flex justify-end">
-                <button class="p-1.5 rounded-full bg-gray-100">
+                <button @click="$event => $generalStore.isLoginOpen = false" class="p-1.5 rounded-full bg-gray-100">
                     <Icon name="mdi:close" size="26" />
                 </button>
             </div>
@@ -23,5 +23,6 @@
 </template>
 
 <script setup>
+const { $generalStore } = useNuxtApp()
 let isRegister = ref(true)
 </script>

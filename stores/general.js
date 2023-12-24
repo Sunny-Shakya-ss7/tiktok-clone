@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const usGeneralrofileStore = defineStore("general", {
+export const useGeneralStore = defineStore("general", {
   state: () => ({
     isLoginOpen: false,
     isEditProfileOpen: false,
@@ -12,4 +12,5 @@ export const usGeneralrofileStore = defineStore("general", {
     following: null,
   }),
   actions: {},
+  persist: true,
 });
