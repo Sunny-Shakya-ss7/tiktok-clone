@@ -47,6 +47,8 @@ const register = async () => {
         await $userStore.getTokens()
         await $userStore.register(name.value, email.value, password.value, confirmPassword.value)
         await $userStore.getUser()
+        await $userStore.getRandomUsers('suggested')
+        await $userStore.getRandomUsers('following')
 
         $generalStore.isLoginOpen = false
     } catch (error) {

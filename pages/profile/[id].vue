@@ -9,14 +9,14 @@
                         {{ $generalStore.allLowerCaseNoCaps($profileStore.name) }}
                     </div>
                     <div class="text-[18px] truncate">{{ $profileStore.name }}</div>
-                    <button v-if="$profileStore.id === $userStore.id"
-                        @click="$event => $generalStore.isEditProfileOpen = true"
-                        class="flex items-center rounded-md py-1.5 px-3.5 mt-3 text-[15px] font-semibold border hover:bg-gray-100">
-                        <Icon class="mt-0.5 mr-1" name="mdi:pencil" />
+                    <button v-if="$profileStore.id === $userStore.id" @click="$generalStore.isEditProfileOpen = true"
+                        class="flex item-center rounded-md py-1.5 px-3.5 mt-3 text-[15px] font-semibold border hover:bg-gray-100">
+                        <Icon class="mt-0.5 mr-1" name="mdi:pencil" size="18" />
                         <div>Edit profile</div>
                     </button>
+
                     <button v-else
-                        class="flex items-center rounded-md py-1.5 px-8 mt-3 text-[15px] text-white font-semibold bg-[#F02C56]">
+                        class="flex item-center rounded-md py-1.5 px-8 mt-3 text-[15px] text-white font-semibold bg-[#F02C56]">
                         Follow
                     </button>
                 </div>
@@ -32,7 +32,7 @@
                     <span class="text-gray-500 font-light text-[15px] pl-1.5">Followers</span>
                 </div>
                 <div class="mr-4">
-                    <span class="font-bold">3K</span>
+                    <span class="font-bold">{{ allLikes }}</span>
                     <span class="text-gray-500 font-light text-[15px] pl-1.5">Likes</span>
                 </div>
             </div>
@@ -59,14 +59,14 @@
 
 <script setup>
 import MainLayout from '~/layouts/MainLayout.vue';
-
 import { storeToRefs } from 'pinia';
 const { $userStore, $profileStore, $generalStore } = useNuxtApp()
-
 const { posts, allLikes } = storeToRefs($profileStore)
 
 const route = useRoute()
 let show = ref(false)
+
+definePageMeta({ middleware: 'auth' })
 
 onMounted(async () => {
     try {

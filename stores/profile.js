@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import axios from "~/plugins/axios";
+import axios from "../plugins/axios";
 
 const $axios = axios().provide.axios;
 
@@ -22,7 +22,20 @@ export const useProfileStore = defineStore("profile", {
       this.$state.name = res.data.user[0].name;
       this.$state.bio = res.data.user[0].bio;
       this.$state.image = res.data.user[0].image;
+
       this.$state.posts = res.data.posts;
+
+      this.allLikesCount();
+    },
+
+    allLikesCount() {
+      this.allLikes = 0;
+      for (let i = 0; i < this.posts.length; i++) {
+        const post = this.posts[i];
+        for (let j = 0; j < post.likes.length; j++) {
+          this.allLikes++;
+        }
+      }
     },
 
     resetUser() {

@@ -130,6 +130,8 @@ let fileData = ref(null)
 let errors = ref(null)
 let isUploading = ref(null)
 
+definePageMeta({ middleware: 'auth' })
+
 watch(() => caption.value, (caption) => {
     if (caption.length >= 150) {
         errorType.value = 'caption'
