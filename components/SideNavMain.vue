@@ -11,34 +11,47 @@
 
             <div class="border-b lg:ml-2 mt-2" />
 
-            <div class="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">Suggested accounts</div>
+            <div class="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">
+                Suggested accounts
+            </div>
 
             <div class="lg:hidden block pt-3" />
 
-            <div class="cursor-pointer">
-                <MenuItemFollow />
+
+            <div v-if="$generalStore.suggested" v-for="sug in $generalStore.suggested">
+                <div @click="isLoggedIn(sug)" class="cursor-pointer">
+                    <MenuItemFollow :user="sug" />
+                </div>
             </div>
 
-            <button class="lg:block hidden text-[#F02C56] pt-1.5 pl-2 text-[13px]">See all</button>
 
-            <div class="border-b lg:ml-2 mt-2" />
+            <button class="lg:block hidden text-[#F02C56] pt-1.5 pl-2 text-[13px]">
+                See all
+            </button>
 
-            <div class="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">Following accounts</div>
+            <div v-if="$userStore.id">
+                <div class="border-b lg:ml-2 mt-2" />
 
-            <div class="lg:hidden block pt-3" />
+                <div class="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">
+                    Following accounts
+                </div>
 
-            <div class="cursor-pointer">
-                <MenuItemFollow />
+                <div class="lg:hidden block pt-3" />
+
+                <div v-if="$generalStore.following" v-for="fol in $generalStore.following">
+                    <div @click="isLoggedIn(fol)" class="cursor-pointer">
+                        <MenuItemFollow :user="fol" />
+                    </div>
+                </div>
+
+                <button class="lg:block hidden text-[#F02C56] pt-1.5 pl-2 text-[13px]">See more</button>
+
             </div>
-
-            <button class="lg:block hidden text-[#F02C56] pt-1.5 pl-2 text-[13px]">See more</button>
-
             <div class="lg:block hidden border-b lg:ml-2 mt-2" />
 
             <div class="lg:block hidden text-[11px] text-gray-500">
                 <div class="pt-4 px-2">About Newsroom TikTok Shop Contact Careers ByteDance</div>
-                <div class="pt-4 px-2">TikTok for Good Advertise Developers Transparency TikTok Rewards TikTok Browse
-                    TikTok
+                <div class="pt-4 px-2">TikTok for Good Advertise Developers Transparency TikTok Rewards TikTok Browse TikTok
                     Embeds</div>
                 <div class="pt-4 px-2">Help Safety Terms Privacy Creator Portal Community Guidelines</div>
                 <div class="pt-4 px-2">© 2023 TikTok</div>
@@ -46,12 +59,20 @@
 
             <div class="pb-14"></div>
         </div>
+
     </div>
 </template>
 
 <script setup>
-import MenuItem from './MenuItem.vue';
-
+const { $generalStore, $userStore } = useNuxtApp()
 const route = useRoute()
-</script>
+const router = useRouter()
 
+const isLoggedIn = (fol) => {
+    if (!$userStore.id) {
+        $generalStore.isLoginOpen = true
+        return
+    }
+    setTimeout(() => router.push(`/profile/${fol.id}`), 200)
+}
+</script>

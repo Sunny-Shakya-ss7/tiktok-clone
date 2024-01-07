@@ -3,6 +3,7 @@
         class="fixed flex justify-center pt-14 md:pt-[105px] z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50 overflow-auto">
         <div class="relative bg-white w-full max-w-[700px] sm:h-[580px] h-[655px] mx-3 p-4 rounded-lg mb-10"
             :class="!uploadedImage ? 'h-[655px]' : 'h-[580px]'">
+
             <div class="absolute flex items-center justify-between w-full p-5 left-0 top-0 border-b border-b-gray-300">
                 <div class="text-[22px] font-medium">
                     Edit profile
@@ -22,7 +23,7 @@
 
                         <div class="flex items-center justify-center sm:-mt-6">
                             <label for="image" class="relative cursor-pointer">
-                                <img class="rounded-full" width="95" src="https://picsum.photos/id/8/300/320">
+                                <img class="rounded-full" width="95" :src="userImage">
                                 <div
                                     class="absolute bottom-0 right-0 rounded-full bg-white shadow-xl border p-1 border-gray-300 inline-block w-[32px]">
                                     <Icon name="ph:pencil-simple-line-bold" size="17" class="-mt-1 ml-0.5" />
@@ -82,6 +83,7 @@
                 </div>
             </div>
 
+
             <div id="ButtonSection" class="absolute p-5 left-0 bottom-0 border-t border-t-gray-300 w-full">
                 <div id="UpdateInfoButtons" v-if="!uploadedImage" class="flex items-center justify-end">
                     <button @click="$generalStore.isEditProfileOpen = false"
@@ -108,6 +110,7 @@
                     </button>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
@@ -119,6 +122,8 @@ import 'vue-advanced-cropper/dist/style.css';
 import { storeToRefs } from 'pinia';
 const { $userStore, $generalStore, $profileStore } = useNuxtApp()
 const { name, bio, image } = storeToRefs($userStore)
+
+const route = useRoute()
 
 onMounted(() => {
     userName.value = name.value
@@ -137,6 +142,47 @@ let isUpdated = ref(false)
 const getUploadedImage = (e) => {
     file.value = e.target.files[0]
     uploadedImage.value = URL.createObjectURL(file.value)
+}
+const cropAndUpdateImage = async () => {
+    const { coordinates } = cropper.value.getResult()
+    let data = new FormData();
+
+    data.append('image', file.value || '')
+    data.append('height', coordinates.height || '')
+    data.append('width', coordinates.width || '')
+    data.append('left', coordinates.left || '')
+    data.append('top', coordinates.top || '')
+
+    try {
+        await $userStore.updateUserImage(data)
+        await $userStore.getUser()
+        await $profileStore.getProfile(route.params.id)
+
+        $generalStore.updateSideMenuImage($generalStore.suggested, $userStore)
+        $generalStore.updateSideMenuImage($generalStore.following, $userStore)
+
+        userImage.value = image.value
+        uploadedImage.value = null
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const updateUserInfo = async () => {
+    try {
+        await $userStore.updateUser(userName.value, userBio.value)
+        await $userStore.getUser()
+        await $profileStore.getProfile(route.params.id)
+
+        userName.value = name.value
+        userBio.value = bio.value
+
+        setTimeout(() => {
+            $generalStore.isEditProfileOpen = false
+        }, 100)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 watch(() => userName.value, () => {
