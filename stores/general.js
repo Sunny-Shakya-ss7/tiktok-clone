@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-import axios from "~/plugins/axios";
+import { useUserStore } from "./user";
+import axios from "../plugins/axios";
 
 const $axios = axios().provide.axios;
 
@@ -34,6 +35,7 @@ export const useGeneralStore = defineStore("general", {
     async hasSessionExpired() {
       await $axios.interceptors.response.use(
         (response) => {
+          // Call was successful, continue.
           return response;
         },
         (error) => {
@@ -54,6 +56,13 @@ export const useGeneralStore = defineStore("general", {
           }
         }
       );
+    },
+
+    async getPostById(id) {
+      let res = await $axios.get(`/api/posts/${id}`);
+
+      this.$state.selectedPost = res.data.post[0];
+      this.$state.ids = res.data.ids;
     },
 
     async getRandomUsers(type) {
