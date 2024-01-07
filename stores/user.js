@@ -31,6 +31,10 @@ export const useUserStore = defineStore("user", {
       });
     },
 
+    async createPost(data) {
+      return await $axios.post("/api/posts", data);
+    },
+
     async logout() {
       await $axios.post("/logout");
       this.resetUser();
