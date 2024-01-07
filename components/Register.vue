@@ -2,19 +2,23 @@
     <div class="text-center text-[28px] mb-4 font-bold">Sign up</div>
 
     <div class="px-6 pb-2">
-        <TextInput placeholder="Full name" v-model:input="name" inputType="text" :autoFocus="true" error="" />
+        <TextInput placeholder="Full name" v-model:input="name" inputType="text" :autoFocus="true"
+            :error="errors && errors.name ? errors.name[0] : ''" />
     </div>
 
     <div class="px-6 pb-2">
-        <TextInput placeholder="Email address" v-model:input="email" inputType="email" error="" />
+        <TextInput placeholder="Email address" v-model:input="email" inputType="email"
+            :error="errors && errors.email ? errors.email[0] : ''" />
     </div>
 
     <div class="px-6 pb-2">
-        <TextInput placeholder="Password" v-model:input="password" inputType="password" error="" />
+        <TextInput placeholder="Password" v-model:input="password" inputType="password"
+            :error="errors && errors.password ? errors.password[0] : ''" />
     </div>
 
     <div class="px-6 pb-2">
-        <TextInput placeholder="Confirm password" v-model:input="confirmPassword" inputType="password" error="" />
+        <TextInput placeholder="Confirm password" v-model:input="confirmPassword" inputType="password"
+            :error="errors && errors.confirmPassword ? errors.confirmPassword[0] : ''" />
     </div>
 
     <div class="px-6 text-[12px] text-gray-600">Forgot password?</div>
